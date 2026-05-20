@@ -106,3 +106,38 @@ function addStudent() {
 function deleteCard(button) {
     button.closest(".col-md-4").remove();
 }
+
+
+// total students counter
+
+let number = 1;
+
+    let counter = setInterval(() => {
+
+        document.getElementById("students").innerHTML = number;
+
+        number++;
+
+        if(number > 500){
+            clearInterval(counter);
+        }
+
+    }, 20);
+
+
+    let number1 = 1;
+
+    let counter1 = setInterval(() => {
+
+        document.getElementById("teachers").innerHTML = number1;
+
+        number1++;
+
+        if(number1 > 400){
+            clearInterval(counter1);
+        }
+
+    }, 20);
+
+
+
