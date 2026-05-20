@@ -41,19 +41,19 @@ studentTable.addEventListener("click", function (e) {
 
 
 
-function addStudent(){
+function addStudent() {
 
-      let name = document.getElementById("studentName").value.trim();
-      let course = document.getElementById("studentCourse").value.trim();
-      let roll = document.getElementById("studentRoll").value.trim();
+    let name = document.getElementById("studentName").value.trim();
+    let course = document.getElementById("studentCourse").value.trim();
+    let roll = document.getElementById("studentRoll").value.trim();
 
-      if(name === "" || course === "" || roll === ""){
+    if (name === "" || course === "" || roll === "") {
         alert("Please fill all fields");
         return;
-      }
+    }
 
-      
-      let card = `
+
+    let card = `
       
         <div class="col-md-4 mb-4">
 
@@ -61,7 +61,7 @@ function addStudent(){
 
             <div class="card-top">
 
-              <img src="https://i.pravatar.cc/150?img=${Math.floor(Math.random()*70)}  rounded-circle" 
+              <img src="https://i.pravatar.cc/150?img=${Math.floor(Math.random() * 70)}  rounded-circle" 
                 class="student-img">
 
               <h4 class="mt-3">${name}</h4>
@@ -93,17 +93,16 @@ function addStudent(){
 
       `;
 
-      document.getElementById("studentContainer").innerHTML += card;
+    document.getElementById("studentContainer").innerHTML += card;
 
-      // Clear Inputs
-      document.getElementById("studentName").value = "";
-      document.getElementById("studentCourse").value = "";
-      document.getElementById("studentRoll").value = "";
+    // Clear Inputs
+    document.getElementById("studentName").value = "";
+    document.getElementById("studentCourse").value = "";
+    document.getElementById("studentRoll").value = "";
 
-    }
+}
 
-    // Delete Card
-    function deleteCard(button){
-      button.closest(".col-md-4").remove();
-    }
-    
+// Delete Card
+function deleteCard(button) {
+    button.closest(".col-md-4").remove();
+}
