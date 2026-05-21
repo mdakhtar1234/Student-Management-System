@@ -4,11 +4,17 @@ let count = 301;
 
 studentForm.addEventListener("submit", function (e) {
 
+
     e.preventDefault();
     count += 1;
     let name = document.getElementById("name").value.trim();
     let studentClass = document.getElementById("class").value.trim();
     let phone = document.getElementById("phone").value;
+    
+    if (name === "" ||studentClass === "" || phone === "") {
+        alert("Please fill all fields");
+        return;
+    }
 
     let row = `
         <tr>
@@ -40,7 +46,7 @@ studentTable.addEventListener("click", function (e) {
 
 
 
-
+// Add the Students
 function addStudent() {
 
     let name = document.getElementById("studentName").value.trim();
@@ -94,7 +100,6 @@ function addStudent() {
       `;
 
     document.getElementById("studentContainer").innerHTML += card;
-
     // Clear Inputs
     document.getElementById("studentName").value = "";
     document.getElementById("studentCourse").value = "";
@@ -110,30 +115,30 @@ function deleteCard(button) {
 
 // total students counter
 
-let number = 1;
+let S_countNo = 1;
 
     let counter = setInterval(() => {
 
-        document.getElementById("students").innerHTML = number;
+        document.getElementById("students").innerHTML = S_countNo;
 
-        number++;
+        S_countNo++;
 
-        if(number > 500){
+        if(S_countNo > 500){
             clearInterval(counter);
         }
 
     }, 20);
 
 
-    let number1 = 1;
+    let T_countNo = 1;
 
     let counter1 = setInterval(() => {
 
-        document.getElementById("teachers").innerHTML = number1;
+        document.getElementById("teachers").innerHTML = T_countNo;
 
-        number1++;
+        T_countNo++;
 
-        if(number1 > 400){
+        if(T_countNo > 400){
             clearInterval(counter1);
         }
 
@@ -141,3 +146,45 @@ let number = 1;
 
 
 
+// add the teacher 
+
+function addTeacher() {
+
+    let teacher = document.getElementById("teacherName").value.trim();
+    let subjcet = document.getElementById("subjectName").value.trim();
+    let socialLink = document.getElementById("socialMediaLink").value.trim();
+
+    if ( teacher === "" || subjcet === "" || socialLink === "") {
+        alert("Please fill all fields");
+        return;
+    }
+
+
+    let card = `
+      
+          <div class="col-md-4">
+                            <div class="card shadow teacher-card ">
+                                <div class="card-body text-center">
+                                 <img src="https://i.pravatar.cc/150?img=${Math.floor(Math.random() * 70)}  rounded-circle" style="width: 100px;" 
+                                        class="teacher-img mb-3 rounded-circle border border-success border-3">
+                                    <h5>${teacher}</h5>
+                                    <p>${subjcet}</p>
+                                     <p>${socialLink}</p>
+                                    <button  class="btn btn-danger" onclick="deleteTeacherCard(this)">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+      `;
+
+    document.getElementById("teacherContainer").innerHTML += card;
+    // Clear Inputs
+    document.getElementById("teacherName").value = "";
+    document.getElementById("subjectName").value = "";
+    document.getElementById("socialMediaLink").value = "";
+
+}
+
+// Delete Card
+function deleteTeacherCard(button) {
+    button.closest(".col-md-4").remove();
+}
