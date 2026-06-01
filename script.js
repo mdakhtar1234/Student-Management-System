@@ -188,3 +188,86 @@ function addTeacher() {
 function deleteTeacherCard(button) {
     button.closest(".col-md-4").remove();
 }
+
+
+
+
+
+         // Attendance Data
+        let attendanceData = [
+            {
+                roll: 1,
+                name: "Ali",
+                status: ""
+            },
+            {
+                roll: 2,
+                name: "Ahmed",
+                status: ""
+            },
+            {
+                roll: 3,
+                name: "Rahul",
+                status: ""
+            }
+        ];
+
+       
+
+        // Attendance Render
+        function showAttendance() {
+
+
+            let data = "";
+
+            attendanceData.forEach((student, index) => {
+
+                data += `
+                <tr>
+                    <td>${student.roll}</td>
+                    <td>${student.name}</td>
+
+                    <td>
+                        <button class="btn btn-success btn-sm"
+                        onclick="markPresent(${index})">
+                        Present
+                        </button>
+
+                        <button class="btn btn-danger btn-sm"
+                        onclick="markAbsent(${index})">
+                        Absent
+                        </button>
+
+                        <span class="ms-3 fw-bold">
+                            ${student.status}
+                        </span>
+                    </td>
+                </tr>
+                `;
+            });
+      document.getElementById("attendanceTable").innerHTML = data;
+        }
+
+        // Present
+        function markPresent(index) {
+            attendanceData[index].status = "Present";
+            showAttendance();
+        }
+
+        // Absent
+        function markAbsent(index) {
+            attendanceData[index].status = "Absent";
+            showAttendance();
+        }
+
+        
+        showAttendance();
+
+
+
+
+
+        // Dark and Light Mode
+         function toggleTheme() {
+            document.body.classList.toggle("dark");
+        }

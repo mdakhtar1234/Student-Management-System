@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Multiple Teacher Add</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+
+        input {
+            padding: 8px;
+            width: 250px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: aqua;
+            border: none;
+            cursor: pointer;
+        }
+
+        .main {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .card {
+            width: 250px;
+            border: 2px solid black;
+            padding: 10px;
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Add Multiple Teachers</h2>
+    <!-- Teacher Name -->
+    <label>Teacher Name</label>
+    <br>
+    <input type="text" id="teacherName" placeholder="Enter teacher name">
+    <!-- Subject Name -->
+    <label>Subject Name</label>
+    <br>
+    <input type="text" id="subjectName" placeholder="Enter subject name">
+    <!-- File Input -->
+    <label for="file" style="background-color:aqua;padding:10px;">
+        Select Image
+    </label>
+
+    <input type="file" id="file" style="display:none;">
+
+    <!-- Button -->
+    <button onclick="addTeacher()">Add Teacher</button>
+
+    <!-- Output -->
+    <div class="main" id="output"></div>
+
+    <script>
+
+        let file = document.getElementById("file");
+        let fileText = document.getElementById("fileText");
+
+        // File Name Show
+        file.onchange = function () {
+
+            fileText.innerHTML = file.files[0].name;
+
+        }
+
+        // Add Teacher Function
+        function addTeacher() {
+
+            let teacherName = document.getElementById("teacherName").value;
+
+            let subjectName = document.getElementById("subjectName").value;
+
+            let output = document.getElementById("output");
+
+
+
+            let imageURL = URL.createObjectURL(file.files[0]);
+
+
+
+            // New Card Add
+            output.innerHTML += `
+
+            <div class="card">
+
+                <img src="${imageURL}">
+
+                <h3>${teacherName}</h3>
+
+                <p><b>Subject :</b> ${subjectName}</p>
+
+            </div>
+
+            `;
+
+            // Input Clear
+            document.getElementById("teacherName").value = "";
+
+            document.getElementById("subjectName").value = "";
+
+            file.value = "";
+
+            fileText.innerHTML = "No File Selected";
+
+        }
+
+    </script>
+
+</body>
+
+</html>

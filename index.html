@@ -50,6 +50,11 @@
             object-fit: cover;
             border: 0.35rem solid rgba(255, 255, 255, 0.9);
         }
+
+         .dark {
+            background: #212529;
+            color: white;
+        }
     </style>
 
     <!-- Custom CSS -->
@@ -101,6 +106,10 @@
                     </a>
                 </li>
             </ul>
+
+             <button class="btn btn-dark" onclick="toggleTheme()">
+               Dark / Light Mode
+            </button>
         </div>
 
         <!-- Page Content -->
@@ -312,15 +321,9 @@
                                 </tr>
                             </thead>
 
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Ali</td>
-                                    <td>
-                                        <button class="btn btn-success btn-sm">Present</button>
-                                        <button class="btn btn-danger btn-sm">Absent</button>
-                                    </td>
-                                </tr>
+
+                            <tbody id="attendanceTable">
+                                
                             </tbody>
                         </table>
                     </div>
